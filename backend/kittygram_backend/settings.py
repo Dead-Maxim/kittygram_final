@@ -11,15 +11,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-#Тк файл .env не пушится, тесты ругаются
-#что у DEBUG нет метода .lower()
-#добавить на проде
-DEBUG = os.getenv('DEBUG') == 'true'
+DEBUG = os.getenv('DEBUG').lower() == 'true'
 
-#Тк файл .env не пушится, тесты ругаются
-#что у ALLOWED_HOSTS нет метода .split(',')
-#добавить на проде
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS')#.split(',')
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(',')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
