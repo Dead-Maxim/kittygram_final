@@ -1,9 +1,8 @@
 name: Main Kittygram workflow
 
+#сделал изменения в workflow, а тут забыл))
 on:
   push:
-    branches:
-      - main
 
 jobs:
   tests:
@@ -128,6 +127,7 @@ jobs:
         - build_and_push_to_docker_hub
         - build_frontend_and_push_to_docker_hub
         - build_gateway_and_push_to_docker_hub
+      if: github.ref == 'refs/heads/main'
       steps:
         - name: Checkout repo
           uses: actions/checkout@v3
@@ -164,4 +164,4 @@ jobs:
       with:
         to: ${{ secrets.TELEGRAM_TO }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
-        message: Деплой kittygram успешно выполнен! Наконец-то!
+        message: Деплой kittygram успешно выполнен!
